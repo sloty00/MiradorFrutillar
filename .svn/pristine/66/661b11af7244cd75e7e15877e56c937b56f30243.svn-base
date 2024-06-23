@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="792" pageHeight="612" orientation="Landscape" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4e184dec-bc41-4427-a8cb-985216fee6c4">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT chl.`cod_check` AS cod_check, op.cod_asign AS cod_asign, chl.`rut` AS rut, chl.`patente` AS patente, chl.`fecha` AS fecha_check, op.fecha_asign AS fecha_asign, chl.`km_actual` AS km_actual, chl.`km_total` AS km_total, chl.`proxima_rev` AS proxima_rev, chl.`proxima_man` AS proxima_man FROM checklist chl, operario op]]>
+	</queryString>
+	<field name="cod_check" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cod_asign" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="rut" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="patente" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fecha_check" class="java.sql.Date"/>
+	<field name="fecha_asign" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="km_actual" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="km_total" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="proxima_rev" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="proxima_man" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="25" splitType="Stretch">
+			<textField pattern="dd MMMMM yyyy">
+				<reportElement x="652" y="5" width="100" height="20" uuid="e72d78cf-dbdc-4a30-acb4-19662916126a"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="140" splitType="Stretch">
+			<staticText>
+				<reportElement x="318" y="51" width="121" height="32" uuid="b896e498-ba3f-4568-b5fb-1fdc0cff3b95"/>
+				<textElement>
+					<font size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CheckList]]></text>
+			</staticText>
+			<image>
+				<reportElement x="0" y="0" width="164" height="135" uuid="8478d6bd-b4c5-4072-929e-0b61962bd9a3"/>
+				<imageExpression><![CDATA["C:\\Users\\Jose\\Documents\\NetBeansProjects\\mirador_frutillar\\src\\Principal\\images\\informe.png"]]></imageExpression>
+			</image>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="44" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="20" width="54" height="24" uuid="15e3d123-5a71-4b95-99b7-57a86c5472a3"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[C° Check]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="66" y="20" width="54" height="24" uuid="fff3e885-985c-46e4-be76-0daf5bf8d211"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[C° Asign]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="135" y="20" width="54" height="24" uuid="0a2ace51-733e-41ad-94ae-a79b475eba43"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Rut]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="202" y="20" width="54" height="24" uuid="215d984a-8f82-401e-bd96-042e4dbdae10"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Patente]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="266" y="20" width="65" height="24" uuid="000034c1-8045-4f17-b672-0230ac2d0bab"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha Check]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="345" y="20" width="69" height="24" uuid="fff8fefa-1aea-44e6-ad59-3de474147dd4"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha Asign]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="429" y="20" width="69" height="24" uuid="7eba2aab-cc94-4884-8ce6-8ebb9be8a9b8"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Km Actual]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="515" y="20" width="69" height="24" uuid="b199f1af-abd9-48b5-91ad-16f512f7a86f"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Km Total]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="599" y="20" width="74" height="24" uuid="58c6822e-384b-4247-b2ce-9334ba8a107f"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Prox Rev.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="687" y="20" width="65" height="24" uuid="6dca891c-16df-49b7-920c-dd2c2885551a"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Prox Man.]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="47" splitType="Stretch">
+			<textField pattern="###0">
+				<reportElement x="0" y="0" width="54" height="20" uuid="6c72dd3f-fc8d-4c15-916e-c663122ddab0"/>
+				<textFieldExpression><![CDATA[$F{cod_check}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0">
+				<reportElement x="66" y="0" width="54" height="20" uuid="0f341521-3443-4b20-8946-5228857ffae4"/>
+				<textFieldExpression><![CDATA[$F{cod_asign}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0">
+				<reportElement x="135" y="0" width="54" height="20" uuid="1678c261-be22-49e2-af92-a0df4d299b4e"/>
+				<textFieldExpression><![CDATA[$F{rut}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0">
+				<reportElement x="202" y="0" width="54" height="20" uuid="cb4ccc8e-1720-4db5-aea4-ac8e4ebd9f7f"/>
+				<textFieldExpression><![CDATA[$F{patente}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="266" y="0" width="65" height="20" uuid="1d8e3579-a3c2-41f7-b547-b1dd7ec19b97"/>
+				<textFieldExpression><![CDATA[$F{fecha_check}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="345" y="0" width="65" height="20" uuid="eafa3b81-1cf6-4265-9e71-3fdc96056d36"/>
+				<textFieldExpression><![CDATA[$F{fecha_asign}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement x="429" y="0" width="69" height="20" uuid="0c4a46d4-c229-4033-8e7d-d2b2676ab566"/>
+				<textFieldExpression><![CDATA[$F{km_actual}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement x="515" y="0" width="69" height="20" uuid="6275e07f-1414-47ed-bb8e-46757a8dd1b1"/>
+				<textFieldExpression><![CDATA[$F{km_total}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="599" y="0" width="74" height="20" uuid="b08a90bc-4183-4296-9b94-71f7686b2c56"/>
+				<textFieldExpression><![CDATA[$F{proxima_rev}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="687" y="0" width="65" height="20" uuid="4f094f3a-a8c6-4b4a-9c0a-04fa418dbdf4"/>
+				<textFieldExpression><![CDATA[$F{proxima_man}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField evaluationTime="Report">
+				<reportElement x="80" y="34" width="40" height="20" uuid="b19f8e42-f3a5-4558-a9b5-b3c745954b45"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<componentElement>
+				<reportElement x="652" y="4" width="100" height="50" uuid="2614638c-ec72-4589-890f-b9b76b4db77d"/>
+				<jr:DataMatrix xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" textPosition="bottom">
+					<jr:codeExpression><![CDATA["CODE VARTO INC"]]></jr:codeExpression>
+				</jr:DataMatrix>
+			</componentElement>
+			<textField>
+				<reportElement x="0" y="34" width="80" height="20" uuid="3a60c333-82df-4362-98f9-4c457acd5700"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

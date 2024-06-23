@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="1300" pageHeight="842" orientation="Landscape" columnWidth="1260" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="598961c6-a94b-48d6-857e-cbe8c5826959">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="233"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+     libro_sueldo.`cod_folio` AS libro_sueldo_cod_folio,
+     libro_sueldo.`rut` AS libro_sueldo_rut,
+     libro_sueldo.`mes` AS libro_sueldo_mes,
+     libro_sueldo.`año` AS libro_sueldo_año,
+     libro_sueldo.`afp` AS libro_sueldo_afp,
+     libro_sueldo.`salud` AS libro_sueldo_salud,
+     libro_sueldo.`heo` AS libro_sueldo_heo,
+     libro_sueldo.`hnt` AS libro_sueldo_hnt,
+     libro_sueldo.`bonificacion` AS libro_sueldo_bonificacion,
+     libro_sueldo.`locomocion` AS libro_sueldo_locomocion,
+     libro_sueldo.`sueldo_bruto` AS libro_sueldo_sueldo_bruto,
+     libro_sueldo.`anticipos` AS libro_sueldo_anticipos
+FROM
+     `libro_sueldo` libro_sueldo]]>
+	</queryString>
+	<field name="libro_sueldo_cod_folio" class="java.lang.String"/>
+	<field name="libro_sueldo_rut" class="java.lang.String"/>
+	<field name="libro_sueldo_mes" class="java.lang.String"/>
+	<field name="libro_sueldo_año" class="java.lang.Integer"/>
+	<field name="libro_sueldo_afp" class="java.lang.Integer"/>
+	<field name="libro_sueldo_salud" class="java.lang.Integer"/>
+	<field name="libro_sueldo_heo" class="java.lang.Integer"/>
+	<field name="libro_sueldo_hnt" class="java.lang.Integer"/>
+	<field name="libro_sueldo_bonificacion" class="java.lang.Integer"/>
+	<field name="libro_sueldo_locomocion" class="java.lang.Integer"/>
+	<field name="libro_sueldo_sueldo_bruto" class="java.lang.Integer"/>
+	<field name="libro_sueldo_anticipos" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="22" splitType="Stretch">
+			<textField pattern="MM/dd/yyyy">
+				<reportElement x="1160" y="2" width="100" height="20" uuid="b20ce2db-f782-4257-a8c1-6001a6621cdd"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="152" splitType="Stretch">
+			<staticText>
+				<reportElement x="531" y="54" width="236" height="32" uuid="a047d313-7734-4316-8ea9-1c81d17f50a1"/>
+				<textElement>
+					<font size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Reporte de Sueldos.]]></text>
+			</staticText>
+			<image>
+				<reportElement x="0" y="0" width="164" height="135" uuid="87fa1f2f-e906-4c7b-a988-4ee01a4c845a"/>
+				<imageExpression><![CDATA["C:\\Users\\Jose\\Documents\\NetBeansProjects\\mirador_frutillar\\src\\Principal\\images\\informe.png"]]></imageExpression>
+			</image>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="36" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="16" width="100" height="20" uuid="98e0f71c-417c-4d71-b27d-b9dacdd253f7"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[C° Folio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="16" width="100" height="20" uuid="72bab0db-0cdd-4a02-8c95-4059191f8e11"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Rut]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="200" y="16" width="100" height="20" uuid="be12cd90-2c29-459e-ae19-f648939bb3fc"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Mes]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="300" y="16" width="100" height="20" uuid="bed4137a-65dd-4783-981e-3ceb14d052ad"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Año]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="402" y="16" width="100" height="20" uuid="339cf303-028a-4c09-9f0a-f33513898290"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[AFP]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="502" y="16" width="100" height="20" uuid="cbbe33a9-cfe2-4a23-9990-0d901e3384e1"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Salud]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="602" y="16" width="100" height="20" uuid="8ec5e8e9-a42c-4841-9998-d6966fe15f4c"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[HEO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="702" y="16" width="100" height="20" uuid="b1168528-f981-4970-8796-1e91e96198af"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[HNT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="802" y="16" width="100" height="20" uuid="c38e22bd-14be-485e-9cd8-7981e98eef7d"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Bonificacion]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="902" y="16" width="100" height="20" uuid="d2b6bcae-e00a-4a33-93d0-03d516fa2a75"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Locomocion]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1002" y="16" width="100" height="20" uuid="8ffcb595-01f9-48bf-b1d8-94ea2a3add3c"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sueldo Bruto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1102" y="16" width="100" height="20" uuid="5570fb0a-df7c-40e4-99f8-ce62068e7c07"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Anticipo]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="32" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="100" height="20" uuid="349fdf36-8095-453c-9211-fd9405f91345"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{libro_sueldo_cod_folio}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="0" width="100" height="20" uuid="5d0d0f3a-4830-4123-b4e7-a01ff2fd1402"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{libro_sueldo_rut}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="200" y="0" width="100" height="20" uuid="bc3265f6-8a9f-4245-868f-cba8246628ca"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{libro_sueldo_mes}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0">
+				<reportElement x="300" y="0" width="100" height="20" uuid="2503c4c6-2a6c-4d11-a7e4-62ccdc253a0f"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{libro_sueldo_año}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0">
+				<reportElement x="402" y="0" width="100" height="20" uuid="0783b912-38c7-42af-b1f2-67303a30d95a"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{libro_sueldo_afp}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0">
+				<reportElement x="502" y="0" width="100" height="20" uuid="eae205bd-9c91-4536-93e0-82cad15fe6bc"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{libro_sueldo_salud}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0">
+				<reportElement x="602" y="0" width="100" height="20" uuid="ffbb0506-2cf0-401b-9927-6770c127438d"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{libro_sueldo_heo}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0">
+				<reportElement x="702" y="0" width="100" height="20" uuid="8fd05fb1-bdaf-4016-9db7-3617eb2fffc7"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{libro_sueldo_hnt}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement x="802" y="0" width="100" height="20" uuid="81f5b9d5-9133-40a7-9ed4-f583f242ba6d"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{libro_sueldo_bonificacion}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement x="902" y="0" width="100" height="20" uuid="5b9aa755-5d02-46ec-aaef-3539cff9a703"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{libro_sueldo_locomocion}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement x="1002" y="0" width="100" height="20" uuid="c8c27fbc-c1c5-44ee-a68b-23f01d045a9d"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{libro_sueldo_sueldo_bruto}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement x="1102" y="0" width="100" height="20" uuid="5031f0fd-6575-4124-bf88-01ff2565af96"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{libro_sueldo_anticipos}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="9" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<componentElement>
+				<reportElement x="1160" y="4" width="100" height="50" uuid="50b1c7d2-d174-4766-9a1a-92d31eabe098"/>
+				<jr:DataMatrix xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" textPosition="bottom">
+					<jr:codeExpression><![CDATA["CODE VARTO INC"]]></jr:codeExpression>
+				</jr:DataMatrix>
+			</componentElement>
+			<textField>
+				<reportElement x="0" y="34" width="80" height="20" uuid="82cd79c2-1b6a-43b6-84a0-003cdfbdbd1e"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Pagina "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="80" y="34" width="40" height="20" uuid="8f5a4a62-f0e1-471e-add8-2a38a432ff59"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="10" splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Adquisiciones" language="groovy" pageWidth="792" pageHeight="612" orientation="Landscape" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5ed9b458-c33f-4bbd-9a57-a9301939e40c">
+	<property name="ireport.zoom" value="0.9982500000000003"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     mercancia.`codigo_prod` AS mercancia_codigo_prod,
+     mercancia.`fecha` AS mercancia_fecha,
+     mercancia.`tipo_doc` AS mercancia_tipo_doc,
+     mercancia.`num_doc` AS mercancia_num_doc,
+     mercancia.`lote` AS mercancia_lote,
+     mercancia.`descripcion` AS mercancia_descripcion,
+     mercancia.`cantidad` AS mercancia_cantidad,
+     mercancia.`valor_total` AS mercancia_valor_total,
+     mercancia.`forma_pago` AS mercancia_forma_pago,
+     mercancia.`num_cheque` AS mercancia_num_cheque,
+     mercancia.`num_cuenta` AS mercancia_num_cuenta,
+     mercancia.`num_trans` AS mercancia_num_trans
+FROM
+     `mercancia` mercancia]]>
+	</queryString>
+	<field name="mercancia_codigo_prod" class="java.lang.Integer"/>
+	<field name="mercancia_fecha" class="java.sql.Date"/>
+	<field name="mercancia_tipo_doc" class="java.lang.String"/>
+	<field name="mercancia_num_doc" class="java.lang.Integer"/>
+	<field name="mercancia_lote" class="java.lang.String"/>
+	<field name="mercancia_descripcion" class="java.lang.String"/>
+	<field name="mercancia_cantidad" class="java.lang.Integer"/>
+	<field name="mercancia_valor_total" class="java.lang.Integer"/>
+	<field name="mercancia_forma_pago" class="java.lang.String"/>
+	<field name="mercancia_num_cheque" class="java.lang.Integer"/>
+	<field name="mercancia_num_cuenta" class="java.lang.Integer"/>
+	<field name="mercancia_num_trans" class="java.lang.Integer"/>
+	<variable name="IVA" class="java.lang.Double">
+		<variableExpression><![CDATA[0.19]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="32" splitType="Stretch">
+			<textField pattern="dd MMMMM yyyy">
+				<reportElement x="652" y="5" width="100" height="20" uuid="f704e48a-134e-4f82-9d04-6ca3ca502e6f"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="138" splitType="Stretch">
+			<staticText>
+				<reportElement x="320" y="50" width="133" height="32" uuid="6679c7a8-c07c-463c-afb9-ff91e9f6a57f"/>
+				<textElement>
+					<font size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Mercancia.]]></text>
+			</staticText>
+			<image>
+				<reportElement x="0" y="0" width="164" height="135" uuid="25e6fcf5-ccd0-4482-8484-62504e84e926"/>
+				<imageExpression><![CDATA["C:\\Users\\Jose\\Documents\\NetBeansProjects\\mirador_frutillar\\src\\Principal\\images\\informe.png"]]></imageExpression>
+			</image>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="37" splitType="Stretch">
+			<staticText>
+				<reportElement x="-1" y="17" width="66" height="20" uuid="387ebac8-dab6-45a9-9e9b-b1096214289a"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[C° Producto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="65" y="17" width="66" height="20" uuid="37352257-fb03-4ef0-8a83-019595f9e6f8"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tipo Doc.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="131" y="17" width="66" height="20" uuid="36b32651-55a2-49f0-906d-b9b041f23237"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[N° Doc.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="197" y="17" width="89" height="20" uuid="4e68ce42-2734-44e4-b062-3f9095bd50dd"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Descripcion]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="286" y="17" width="66" height="20" uuid="a42516d1-abe1-4cb8-b144-408215035eb4"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="353" y="17" width="66" height="20" uuid="f14e1c81-b749-4770-894e-45d321a27e09"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Lote]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="419" y="17" width="66" height="20" uuid="19393e84-8c40-4dd6-9e87-da46f7a240ac"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cantidad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="485" y="17" width="66" height="20" uuid="9d5e0210-5bfd-4a76-9d1a-03dc275b3bc8"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Forma Pago]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="683" y="17" width="69" height="20" uuid="f29595cc-03e8-434e-ab12-77c368c7d8ea"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Valor Total]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="551" y="17" width="66" height="20" uuid="775b6f39-2014-425b-b89b-8350d39360fe"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Neto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="617" y="17" width="66" height="20" uuid="f8572c9d-2a4c-4474-9d30-d8d19bbc5b8d"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[IVA]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="34" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="65" height="20" uuid="444680b7-54a3-4d18-8905-8953e117c9a7"/>
+				<textFieldExpression><![CDATA[$F{mercancia_codigo_prod}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="66" y="0" width="65" height="20" uuid="d52d4634-8a71-40cd-b4d8-d74dbb99c0d1"/>
+				<textFieldExpression><![CDATA[$F{mercancia_tipo_doc}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="132" y="0" width="65" height="20" uuid="5e3755d6-a128-4065-bb12-11ca0ca22478"/>
+				<textFieldExpression><![CDATA[$F{mercancia_num_doc}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="197" y="0" width="89" height="20" uuid="9d222d3f-91f3-409a-98fa-997462e1b83d"/>
+				<textFieldExpression><![CDATA[$F{mercancia_descripcion}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="286" y="0" width="65" height="20" uuid="cf2240cc-f341-43a7-a2b2-ab3870ee7b5e"/>
+				<textFieldExpression><![CDATA[$F{mercancia_fecha}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0">
+				<reportElement x="352" y="0" width="67" height="20" uuid="a19b8615-c325-4a5e-bc85-30427258df55"/>
+				<textFieldExpression><![CDATA[$F{mercancia_lote}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0">
+				<reportElement x="420" y="0" width="65" height="20" uuid="1de6c59a-2f1d-4d79-901f-a2fa5fc992c1"/>
+				<textFieldExpression><![CDATA[$F{mercancia_cantidad}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0">
+				<reportElement x="486" y="0" width="65" height="20" uuid="079c132e-60fa-4f68-b18f-0930325f8400"/>
+				<textFieldExpression><![CDATA[$F{mercancia_cantidad}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement x="683" y="0" width="65" height="20" uuid="4113bb93-2242-4376-96c7-13031137f532"/>
+				<textFieldExpression><![CDATA[$F{mercancia_valor_total}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement x="552" y="0" width="65" height="20" uuid="1cb7d77d-048f-4294-a33b-fdcc4cd25709"/>
+				<textFieldExpression><![CDATA[$F{mercancia_valor_total}/1.19]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement x="617" y="0" width="65" height="20" uuid="4dddeeb4-95d7-411a-8073-73767acd3a4b"/>
+				<textFieldExpression><![CDATA[$F{mercancia_valor_total}-($F{mercancia_valor_total}/1.19)]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<componentElement>
+				<reportElement x="652" y="4" width="100" height="50" uuid="28f25a5c-ad38-4619-a124-674c33a093af"/>
+				<jr:DataMatrix xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" textPosition="bottom">
+					<jr:codeExpression><![CDATA["CODE VARTO INC"]]></jr:codeExpression>
+				</jr:DataMatrix>
+			</componentElement>
+			<textField>
+				<reportElement x="0" y="34" width="80" height="20" uuid="64505a90-1628-4794-a102-fd71582f047f"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="83" y="34" width="40" height="20" uuid="dbb2dc5e-1d16-48e9-9e40-451d84c90085"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

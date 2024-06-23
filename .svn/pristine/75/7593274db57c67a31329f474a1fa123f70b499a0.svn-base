@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Reporte de Orden de Compras" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9c637b45-d64c-40ae-8c19-cef2f043e9f3">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<subDataset name="dataset1" uuid="634526e5-1ad9-4f15-87b5-62ca892b08f8"/>
+	<queryString>
+		<![CDATA[SELECT
+     orden_compra.`codigo_oc` AS orden_compra_codigo_oc,
+     orden_compra.`URL` AS orden_compra_URL,
+     orden_compra.`descripcion` AS orden_compra_descripcion,
+     orden_compra.`comentario` AS orden_compra_comentario,
+     orden_compra.`fecha_req` AS orden_compra_fecha_req,
+     orden_compra.`gasto` AS orden_compra_gasto,
+     orden_compra.`proveedor` AS orden_compra_proveedor,
+     orden_compra.`docto_rec` AS orden_compra_docto_rec,
+     orden_compra.`precio` AS orden_compra_precio
+FROM
+     `orden_compra` orden_compra]]>
+	</queryString>
+	<field name="orden_compra_codigo_oc" class="java.lang.String"/>
+	<field name="orden_compra_URL" class="java.lang.String"/>
+	<field name="orden_compra_descripcion" class="java.lang.String"/>
+	<field name="orden_compra_comentario" class="java.lang.String"/>
+	<field name="orden_compra_fecha_req" class="java.sql.Date"/>
+	<field name="orden_compra_gasto" class="java.lang.String"/>
+	<field name="orden_compra_proveedor" class="java.lang.String"/>
+	<field name="orden_compra_docto_rec" class="java.lang.String"/>
+	<field name="orden_compra_precio" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="135" splitType="Stretch">
+			<staticText>
+				<reportElement x="297" y="48" width="228" height="32" uuid="e27aca3b-8250-45e5-9269-eebe61cb4a24"/>
+				<textElement>
+					<font size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Orden de Compras.]]></text>
+			</staticText>
+			<image>
+				<reportElement x="0" y="0" width="164" height="135" uuid="0656e7f3-e8d7-470e-811c-f83ded758263"/>
+				<imageExpression><![CDATA["C:\\Users\\Jose\\Documents\\NetBeansProjects\\mirador_frutillar\\src\\Principal\\images\\informe.png"]]></imageExpression>
+			</image>
+			<textField pattern="dd MMMMM yyyy">
+				<reportElement x="702" y="0" width="100" height="20" uuid="8fe1105c-6b19-4dcf-ac42-dd5ea75ebf81"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="15" width="59" height="20" uuid="ad71a15f-79e3-4575-a3ef-3f7d23d0e70f"/>
+				<textElement textAlignment="Justified">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cod. OC]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="59" y="15" width="94" height="20" uuid="cf3c6f62-95b1-47db-b73d-e4a6a46d44a9"/>
+				<textElement textAlignment="Justified">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[URL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="153" y="15" width="114" height="20" uuid="e711ba07-7ac9-43ae-8978-3cb189b43047"/>
+				<textElement textAlignment="Justified">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Descripción]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="267" y="15" width="107" height="20" uuid="d5442cd0-7418-41b8-a315-c56db70318c2"/>
+				<textElement textAlignment="Justified">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Comentario]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="374" y="15" width="79" height="20" uuid="d2189049-85ad-4855-a66b-f4b1568a1b50"/>
+				<textElement textAlignment="Justified">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="453" y="15" width="72" height="20" uuid="57687d06-ccff-4f49-a935-61198f93cef0"/>
+				<textElement textAlignment="Justified">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Gasto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="525" y="15" width="101" height="20" uuid="8d0cfbcc-c096-4fe4-8cdb-7427aaf39f4e"/>
+				<textElement textAlignment="Justified">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Proveedor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="626" y="15" width="88" height="20" uuid="0c02ca05-fc4b-487a-8c52-b5691286c287"/>
+				<textElement textAlignment="Justified">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Documento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="714" y="15" width="88" height="20" uuid="b8a6b093-4f7e-4bb9-a3b3-131f64abb5f9"/>
+				<textElement textAlignment="Justified">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Precio]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="5" splitType="Stretch">
+			<textField>
+				<reportElement x="538" y="0" width="101" height="20" uuid="381868f6-67a3-4843-9288-09fc97320454"/>
+				<textFieldExpression><![CDATA[$F{orden_compra_proveedor}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="59" height="20" uuid="4dad3fae-badf-421a-bed8-9ba91d588068"/>
+				<textFieldExpression><![CDATA[$F{orden_compra_codigo_oc}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="59" y="0" width="94" height="20" uuid="7a591017-109c-439d-959f-71215b3fc22f"/>
+				<textFieldExpression><![CDATA[$F{orden_compra_URL}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="153" y="0" width="114" height="20" uuid="2cd03d58-6573-4682-b188-5a3a6d984fba"/>
+				<textFieldExpression><![CDATA[$F{orden_compra_descripcion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="267" y="0" width="107" height="20" uuid="86228cfb-c4ba-4daa-98c1-51fcdacd893a"/>
+				<textFieldExpression><![CDATA[$F{orden_compra_comentario}]]></textFieldExpression>
+			</textField>
+			<textField pattern="d/M/yyyy">
+				<reportElement x="374" y="0" width="79" height="20" uuid="7861c9fa-f161-434d-a215-cbe559f2c257"/>
+				<textFieldExpression><![CDATA[$F{orden_compra_fecha_req}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="453" y="0" width="72" height="20" uuid="ebed1abd-4d71-433e-a230-653093de0d35"/>
+				<textFieldExpression><![CDATA[$F{orden_compra_gasto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="626" y="0" width="88" height="20" uuid="915e558a-e7d6-4da4-9773-d42ced18aa94"/>
+				<textFieldExpression><![CDATA[$F{orden_compra_docto_rec}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="714" y="0" width="88" height="20" uuid="816829a2-06c6-42c1-aa87-9864d4c8b36e"/>
+				<textFieldExpression><![CDATA[$F{orden_compra_precio}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="8" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="53" splitType="Stretch">
+			<componentElement>
+				<reportElement x="702" y="0" width="100" height="50" uuid="3160f1a7-e5f7-44ea-8079-3d74c39598b8"/>
+				<jr:DataMatrix xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" textPosition="bottom">
+					<jr:codeExpression><![CDATA["CODE VARTO INC"]]></jr:codeExpression>
+				</jr:DataMatrix>
+			</componentElement>
+			<textField>
+				<reportElement x="0" y="33" width="80" height="20" uuid="431e2491-e9e4-4033-b231-a2939fbd8882"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="80" y="33" width="40" height="20" uuid="440614b6-db97-4ca2-9afa-8e03908c1109"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="11" splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Detalle Sueldo" language="groovy" pageWidth="792" pageHeight="612" orientation="Landscape" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="1c5a9193-4cbf-4c90-8954-3554ff5e5582">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="127"/>
+	<parameter name="parameter1" class="java.lang.Integer" isForPrompting="false">
+		<parameterDescription><![CDATA[]]></parameterDescription>
+		<defaultValueExpression><![CDATA[$V{base_imponible}]]></defaultValueExpression>
+	</parameter>
+	<queryString language="SQL">
+		<![CDATA[select su.cod_folio, su.rut, emp.nombres, emp.apellidos, emp.direccion, emp.ciudad, emp.telefono, su.mes, su.año, su.afp, su.salud, su.heo, su.hnt, su.bonificacion, su.locomocion, su.sueldo_bruto, su.anticipos from sueldo su, empleado emp where su.rut = emp.rut]]>
+	</queryString>
+	<field name="cod_folio" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="rut" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nombres" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="apellidos" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="direccion" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ciudad" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="telefono" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="mes" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="año" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="afp" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="salud" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="heo" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="hnt" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="bonificacion" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="locomocion" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="sueldo_bruto" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="anticipos" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<variable name="mes" class="java.lang.Integer">
+		<variableExpression><![CDATA[]]></variableExpression>
+		<initialValueExpression><![CDATA[180]]></initialValueExpression>
+	</variable>
+	<variable name="hora_trabajo" class="java.lang.Integer">
+		<variableExpression><![CDATA[]]></variableExpression>
+		<initialValueExpression><![CDATA[$F{sueldo_bruto}/180]]></initialValueExpression>
+	</variable>
+	<variable name="hora_trabajor" class="java.lang.Integer">
+		<initialValueExpression><![CDATA[$V{hora_trabajo}*50/100]]></initialValueExpression>
+	</variable>
+	<variable name="hora_extra_calcu" class="java.lang.Integer">
+		<initialValueExpression><![CDATA[$V{hora_trabajo}+$V{hora_trabajor}]]></initialValueExpression>
+	</variable>
+	<variable name="hora_extra" class="java.lang.Integer">
+		<initialValueExpression><![CDATA[$V{hora_extra_calcu}*$F{heo}]]></initialValueExpression>
+	</variable>
+	<variable name="hora_no_trabajada" class="java.lang.Integer">
+		<initialValueExpression><![CDATA[$V{hora_trabajo}*$F{hnt}]]></initialValueExpression>
+	</variable>
+	<variable name="sueldo_base_heo" class="java.lang.Integer">
+		<initialValueExpression><![CDATA[$F{sueldo_bruto}+$V{hora_extra}]]></initialValueExpression>
+	</variable>
+	<variable name="bonos" class="java.lang.Integer">
+		<initialValueExpression><![CDATA[$F{bonificacion}+$F{locomocion}]]></initialValueExpression>
+	</variable>
+	<variable name="base_imponible" class="java.lang.Integer">
+		<initialValueExpression><![CDATA[$V{sueldo_base_heo}+$V{bonos}]]></initialValueExpression>
+	</variable>
+	<variable name="afp" class="java.lang.Integer">
+		<initialValueExpression><![CDATA[$V{base_imponible}*$F{afp}/100]]></initialValueExpression>
+	</variable>
+	<variable name="salud" class="java.lang.Integer">
+		<initialValueExpression><![CDATA[$V{base_imponible}*$F{salud}/100]]></initialValueExpression>
+	</variable>
+	<variable name="descuentos" class="java.lang.Integer">
+		<initialValueExpression><![CDATA[$V{afp}+$V{salud}+$V{hora_no_trabajada}+$F{anticipos}]]></initialValueExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="0" width="144" height="79" uuid="09138ffc-2e88-4648-9ddb-29093e246ef5"/>
+				<imageExpression><![CDATA["C:\\Users\\Jose\\Documents\\NetBeansProjects\\mirador_frutillar\\src\\Principal\\images\\mirador.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="269" y="22" width="213" height="30" uuid="12b4d11b-c77c-47d4-ab6a-24534745217c"/>
+				<textElement>
+					<font size="22" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DETALLE SUELDO.]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="652" y="12" width="100" height="52" uuid="42fd3eca-9345-4dd4-9c99-b46694affa2f"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{mes}+"\n"+$F{año}]]></textFieldExpression>
+			</textField>
+			<textField pattern="MM/dd/yyyy">
+				<reportElement x="652" y="-20" width="100" height="20" uuid="53bb0082-7753-47b3-81af-8f3b95dca743"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="105" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="15" width="100" height="20" uuid="a903fd80-83eb-425a-b6bb-21f8bd7ee4b5"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombre Completo:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="100" y="15" width="169" height="20" uuid="2f7e8560-7b59-43fd-8010-b8fcf62187dc"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombres}+" "+$F{apellidos}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="35" width="100" height="20" uuid="6c17baec-b2a7-468e-a2b4-d0ac64c8c534"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Dirección:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="55" width="100" height="20" uuid="5399e48a-1885-4f0c-90f0-1c9a746ca0d4"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Ciudad:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="75" width="100" height="20" uuid="21323af6-fb2c-433d-8125-462f1405b9cf"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Telefono:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="310" y="15" width="68" height="20" uuid="1929b38c-9724-4a72-910b-696e7e45c4fe"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Rut:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="100" y="35" width="169" height="20" uuid="cf390baa-d53c-4415-a2e0-202c71dcd2c9"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{direccion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="55" width="169" height="20" uuid="e6f4cf98-8650-4ecb-808b-aee8ee2dfe88"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ciudad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="75" width="169" height="20" uuid="32205443-16ac-440d-a6e4-f1eaf0d0e379"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{telefono}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="378" y="15" width="157" height="20" uuid="4336c301-0360-4129-a1db-c79d9001e014"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rut}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="33" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="12" width="80" height="20" uuid="34947d6b-fb85-4117-a92e-3069ec5b5198"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Rut]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="80" y="12" width="79" height="20" uuid="d983f36c-af38-4989-a7f5-ee8c2e9303d3"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[AFP]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="159" y="12" width="83" height="20" uuid="2936d4a7-6b2e-457c-856a-50cc65e8e575"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Salud]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="242" y="12" width="78" height="20" uuid="155b1150-e540-4ff0-ac2f-1f62a4f92413"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[HEO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="320" y="12" width="80" height="20" uuid="2586da79-1d56-479a-838a-bfa3d82ce6a5"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[HNT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="400" y="12" width="82" height="20" uuid="987abb21-e844-4cd5-a1d7-f5f1cc686b31"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Bonificación]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="482" y="13" width="85" height="20" uuid="52d0a7a2-9dc3-4fa9-b6e2-888845ab5458"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Locomoción]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="567" y="13" width="85" height="20" uuid="1c3f8c02-b3df-4d38-ab46-08f0cddb07a3"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Anticipos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="652" y="13" width="100" height="20" uuid="b231bf15-1e0a-42a0-92cc-17e8f2a7b82f"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sueldo Bruto]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="23" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="80" height="20" uuid="367bd760-2818-4ab3-a9ee-c65876de8ddb"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{rut}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="80" y="0" width="79" height="20" uuid="9aa5a5f4-d2b8-41f3-a92f-58f213a1eb65"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{afp}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="159" y="0" width="83" height="20" uuid="8cba7675-0c94-450b-9ad9-2cce04c66da5"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{salud}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="242" y="0" width="78" height="20" uuid="6ff3b1a3-0f90-411b-815d-79fda7b37f15"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{heo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="320" y="0" width="80" height="20" uuid="50a18752-fced-4054-89ab-aee87deb478a"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{hnt}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="400" y="0" width="82" height="20" uuid="5c7f8a08-1fd1-4f91-b50c-7df6aa55cb39"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{bonificacion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="482" y="0" width="85" height="20" uuid="8fede72f-363f-4b4e-9786-f4e5f47e74ef"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{locomocion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="567" y="0" width="85" height="20" uuid="bab51e59-96b8-48d2-b852-ed4292568cf2"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{anticipos}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="652" y="0" width="100" height="20" uuid="2178bc33-46a3-48af-b2fe-07bb6576853e"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{sueldo_bruto}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="181" splitType="Stretch">
+			<staticText>
+				<reportElement x="553" y="11" width="99" height="20" uuid="02b428a8-4932-4946-85ad-04236be8eb9f"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Bonificación:]]></text>
+			</staticText>
+			<textField pattern="#,##0">
+				<reportElement x="652" y="11" width="100" height="20" uuid="83c3e3b2-8d76-4bfb-8511-10d8961ee5c4"/>
+				<textFieldExpression><![CDATA[$F{bonificacion}+$F{locomocion}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="553" y="31" width="99" height="20" uuid="94600817-6f78-4a08-b380-af9873f26997"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Horas Extras:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="553" y="51" width="99" height="20" uuid="8bb68746-cfd8-4d6d-a6ae-9538e0429ed2"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Base Imponible:]]></text>
+			</staticText>
+			<textField pattern="#,##0">
+				<reportElement x="652" y="31" width="100" height="20" uuid="930c73d9-23cf-488b-8937-203242017785"/>
+				<textFieldExpression><![CDATA[$F{sueldo_bruto}/180*50/100*$F{heo}+(700000/180*$F{heo})]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement x="652" y="51" width="100" height="20" uuid="51d82c69-c6ea-470d-81d6-37a185ecd401"/>
+				<textFieldExpression><![CDATA[($F{sueldo_bruto}/180*50/100*$F{heo}+(700000/180*$F{heo}))+($F{bonificacion}+$F{locomocion})+$F{sueldo_bruto}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="553" y="71" width="99" height="20" uuid="7b162090-4dc4-4bf1-aa8c-9d5e1e6553d6"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[AFP:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="553" y="91" width="99" height="20" uuid="c36fbe0e-261a-442e-af91-dfb98442a2ee"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Salud:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="553" y="111" width="99" height="20" uuid="76a27439-ada6-4994-8201-b179370fe68e"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[HNT:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="553" y="131" width="99" height="20" uuid="dc419daf-133f-4bea-94b2-3d082a865f5d"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sueldo Liquido:]]></text>
+			</staticText>
+			<textField pattern="#,##0">
+				<reportElement x="652" y="71" width="100" height="20" uuid="ba0e4f84-1e14-4be6-9497-baf2235ab3ad"/>
+				<textFieldExpression><![CDATA[(($F{sueldo_bruto}/180*50/100*$F{heo}+(700000/180*$F{heo}))+($F{bonificacion}+$F{locomocion})+$F{sueldo_bruto})*$F{afp}/100]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement x="652" y="91" width="100" height="20" uuid="cbc0b96d-6e3b-4f1e-b94c-2637ed781cf0"/>
+				<textFieldExpression><![CDATA[(($F{sueldo_bruto}/180*50/100*$F{heo}+(700000/180*$F{heo}))+($F{bonificacion}+$F{locomocion})+$F{sueldo_bruto})*$F{salud}/100]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement x="652" y="111" width="100" height="20" uuid="fd8091e1-0241-4d1a-8470-c3cc07d15b65"/>
+				<textFieldExpression><![CDATA[$F{sueldo_bruto}/180*$F{hnt}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement x="652" y="131" width="100" height="20" uuid="a06cd7e6-1826-44f2-827e-1f7013ebe05d"/>
+				<textFieldExpression><![CDATA[(($F{sueldo_bruto}/180*50/100*$F{heo}+(700000/180*$F{heo}))+($F{bonificacion}+$F{locomocion})+$F{sueldo_bruto})-((($F{sueldo_bruto}/180*50/100*$F{heo}+(700000/180*$F{heo}))+($F{bonificacion}+$F{locomocion})+$F{sueldo_bruto})*$F{afp}/100)-((($F{sueldo_bruto}/180*50/100*$F{heo}+(700000/180*$F{heo}))+($F{bonificacion}+$F{locomocion})+$F{sueldo_bruto})*$F{salud}/100)-($F{sueldo_bruto}/180*$F{hnt})]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="53" splitType="Stretch">
+			<componentElement>
+				<reportElement x="652" y="0" width="100" height="50" uuid="2bd7e6c2-8166-4717-9875-8c46f0a89cc6"/>
+				<jr:DataMatrix xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" textPosition="bottom">
+					<jr:codeExpression><![CDATA["CODE VARTO INC"]]></jr:codeExpression>
+				</jr:DataMatrix>
+			</componentElement>
+			<staticText>
+				<reportElement x="330" y="30" width="97" height="20" uuid="cf4186b9-aff3-43da-abf9-896f9fcf8055"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Firma Empleado.]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

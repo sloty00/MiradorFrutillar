@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="792" pageHeight="612" orientation="Landscape" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="49e95bc6-4da4-4877-a303-1452bd72f81e">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT * FROM `maquinas` where tipo = 'Arriendo']]>
+	</queryString>
+	<field name="patente" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="giro" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nombre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="desde" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="hasta" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="precio_arriendo" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tipo_vehiculo" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="marca" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="modelo" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="año" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="num_folio" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="num_chasis" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="21" splitType="Stretch">
+			<textField pattern="MM/dd/yyyy">
+				<reportElement x="652" y="0" width="100" height="20" uuid="117bec3e-65c2-4534-84d8-569b95334597"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="138" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="0" width="164" height="135" uuid="069b7cb4-4b9e-4abe-bacd-f4f6cfb6864b"/>
+				<imageExpression><![CDATA["C:\\Users\\Jose\\Documents\\NetBeansProjects\\mirador_frutillar\\src\\Principal\\images\\informe.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="278" y="49" width="242" height="32" uuid="b081b554-b2de-46ca-8e20-c8540cdd7cb4"/>
+				<textElement>
+					<font size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Maquinas Arriendos]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="29" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="8" width="100" height="20" uuid="c501c4ba-6070-4eec-a72e-f67db1fd8225"/>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[N° Folio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="8" width="64" height="20" uuid="2cc73799-a252-48b6-8726-25ac3e6810e7"/>
+				<text><![CDATA[patente]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="164" y="8" width="81" height="20" uuid="96011410-a089-4606-a5b5-1796d070ee30"/>
+				<text><![CDATA[giro]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="245" y="8" width="88" height="20" uuid="8e943c83-3a66-4703-8235-24a5f56063a4"/>
+				<text><![CDATA[nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="333" y="8" width="63" height="20" uuid="a2b89810-e42d-4335-a82d-55c51181d272"/>
+				<text><![CDATA[desde]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="396" y="8" width="52" height="20" uuid="11bb1269-3b69-4a83-a0f5-97914e9fbf43"/>
+				<text><![CDATA[hasta]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="448" y="8" width="72" height="20" uuid="49c13199-a1be-4831-91d2-01e890a5fee1"/>
+				<text><![CDATA[Precio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="520" y="8" width="58" height="20" uuid="d3c0b6f8-ff9c-42ed-97c2-210625525ab1"/>
+				<text><![CDATA[Tipo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="578" y="8" width="57" height="20" uuid="cb53986c-1cdc-4ef6-9012-94cd76e14d74"/>
+				<text><![CDATA[marca]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="635" y="8" width="53" height="20" uuid="22a90677-4b7c-4892-ac0f-fea44ab65153"/>
+				<text><![CDATA[modelo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="688" y="8" width="64" height="20" uuid="9d3b6656-ed34-4130-87cc-2cdecad707c7"/>
+				<text><![CDATA[año]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="27" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="100" height="20" uuid="a9df5b95-e62d-40e8-bc4a-52adebf86fb0"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{num_folio}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="0" width="64" height="20" uuid="927d41e9-c351-455b-a6a1-306ab62ce99b"/>
+				<textFieldExpression><![CDATA[$F{patente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="245" y="0" width="88" height="20" uuid="5e92ab7b-ea98-4da9-a765-47f1a69b9f2c"/>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+			<textField pattern="MM/dd/yyyy">
+				<reportElement x="333" y="0" width="63" height="20" uuid="d93cdbe7-c7d0-493a-93bd-2ee5578a5030"/>
+				<textFieldExpression><![CDATA[$F{desde}]]></textFieldExpression>
+			</textField>
+			<textField pattern="MM/dd/yyyy">
+				<reportElement x="396" y="0" width="52" height="20" uuid="d2d041ec-1823-45d0-83ee-2608a75c7422"/>
+				<textFieldExpression><![CDATA[$F{hasta}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="164" y="0" width="81" height="20" uuid="0c0fd709-e357-4551-b6df-159c02f25b24"/>
+				<textFieldExpression><![CDATA[$F{giro}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement x="448" y="0" width="72" height="20" uuid="26adc62a-ca9c-42c8-9266-677f92513c31"/>
+				<textFieldExpression><![CDATA[$F{precio_arriendo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="520" y="0" width="58" height="20" uuid="02891932-cc51-4286-84dd-d25856648c38"/>
+				<textFieldExpression><![CDATA[$F{tipo_vehiculo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="578" y="0" width="57" height="20" uuid="84f420e8-2fd4-4329-8c67-113498d397a4"/>
+				<textFieldExpression><![CDATA[$F{marca}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement x="688" y="0" width="64" height="20" uuid="46e773c0-0e3a-47a8-b0a8-bdd110591aa7"/>
+				<textFieldExpression><![CDATA[$F{año}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="635" y="0" width="53" height="20" uuid="0b6a8c39-366b-4ace-b93e-75a273be0b72"/>
+				<textFieldExpression><![CDATA[$F{modelo}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="14" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="52" splitType="Stretch">
+			<textField evaluationTime="Report">
+				<reportElement x="80" y="30" width="40" height="20" uuid="708f70cf-50cd-424d-aa3c-a24905a6596e"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<componentElement>
+				<reportElement x="652" y="0" width="100" height="50" uuid="2f94cf02-69d1-4310-ac18-2dcff902cac8"/>
+				<jr:DataMatrix xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" textPosition="bottom">
+					<jr:codeExpression><![CDATA["CODE VARTO INC"]]></jr:codeExpression>
+				</jr:DataMatrix>
+			</componentElement>
+			<textField>
+				<reportElement x="0" y="30" width="80" height="20" uuid="486e56f6-75f2-4d97-a784-aa02824cd5e4"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Pagina "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="10" splitType="Stretch"/>
+	</summary>
+</jasperReport>

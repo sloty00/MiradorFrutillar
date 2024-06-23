@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Gastos Comunes" language="groovy" pageWidth="792" pageHeight="612" orientation="Landscape" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="25fd1ea6-d9e9-4255-ba05-4c5d4bb34bdd">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     comunes.`codigo` AS comunes_codigo,
+     comunes.`rut` AS comunes_rut,
+     comunes.`empresa` AS comunes_empresa,
+     comunes.`tipo` AS comunes_tipo,
+     comunes.`consumo` AS comunes_consumo,
+     comunes.`mes` AS comunes_mes,
+     comunes.`ano` AS comunes_ano,
+     comunes.`vencimiento` AS comunes_vencimiento,
+     comunes.`total_mes` AS comunes_total_mes,
+     comunes.`saldo_anterior` AS comunes_saldo_anterior
+FROM
+     `comunes` comunes]]>
+	</queryString>
+	<field name="comunes_codigo" class="java.lang.String"/>
+	<field name="comunes_rut" class="java.lang.String"/>
+	<field name="comunes_empresa" class="java.lang.String"/>
+	<field name="comunes_tipo" class="java.lang.String"/>
+	<field name="comunes_consumo" class="java.lang.String"/>
+	<field name="comunes_mes" class="java.lang.String"/>
+	<field name="comunes_ano" class="java.lang.String"/>
+	<field name="comunes_vencimiento" class="java.sql.Date"/>
+	<field name="comunes_total_mes" class="java.lang.Integer"/>
+	<field name="comunes_saldo_anterior" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="23" splitType="Stretch">
+			<textField pattern="dd MMMMM yyyy">
+				<reportElement x="652" y="3" width="100" height="20" uuid="7fa34bd5-2f5f-43f1-a9bd-32e13ca4b1d4"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="139" splitType="Stretch">
+			<staticText>
+				<reportElement x="310" y="50" width="204" height="32" uuid="f9baa935-964d-466e-9ec4-8dcd74883e93"/>
+				<textElement>
+					<font size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Gastos Comunes]]></text>
+			</staticText>
+			<image>
+				<reportElement x="0" y="0" width="164" height="135" uuid="8d522354-b13f-40a2-baa6-3e1f73c01347"/>
+				<imageExpression><![CDATA["C:\\Users\\Jose\\Documents\\NetBeansProjects\\mirador_frutillar\\src\\Principal\\images\\informe.png"]]></imageExpression>
+			</image>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="38" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="14" width="54" height="24" uuid="403d15f7-3fb5-4ff4-a778-548bfc666fee"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Codigo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="66" y="14" width="54" height="24" uuid="6a262236-2a1d-48d0-8f85-348fcb1c6b7b"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Rut]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="132" y="14" width="54" height="24" uuid="68ebe81a-98a6-4045-997a-9e3dda241d47"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Empresa]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="201" y="14" width="54" height="24" uuid="ded6183f-1c46-4171-a9c0-e960d7a42364"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tipo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="270" y="14" width="66" height="24" uuid="4b863fb8-d720-4700-876c-97c9e92023ea"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Consumo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="352" y="14" width="54" height="24" uuid="0b9b2384-b519-4000-95d7-90218940adcd"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Mes]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="422" y="14" width="54" height="24" uuid="b91cbc30-1c90-4fa8-9e31-86bae3bb3082"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Año]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="493" y="14" width="72" height="24" uuid="a23ae87e-97a2-4357-a6dc-8c246743e873"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Vencimiento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="580" y="14" width="72" height="24" uuid="98c6a61c-898c-4558-9338-4520a6f83087"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Mes]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="670" y="14" width="82" height="24" uuid="4e80728d-b72c-46c0-bd2d-9491dedc6010"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Saldo Anterior]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="35" splitType="Stretch">
+			<textField pattern="###0">
+				<reportElement x="0" y="0" width="54" height="20" uuid="67bff00f-770b-440d-aa48-55080211dae5"/>
+				<textFieldExpression><![CDATA[$F{comunes_codigo}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0">
+				<reportElement x="66" y="0" width="54" height="20" uuid="fada8f74-11f8-4f97-83d2-7b2080228c33"/>
+				<textFieldExpression><![CDATA[$F{comunes_rut}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0">
+				<reportElement x="132" y="0" width="54" height="20" uuid="2f490f39-e085-4dcf-90cb-a181a906e3db"/>
+				<textFieldExpression><![CDATA[$F{comunes_empresa}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0">
+				<reportElement x="201" y="0" width="54" height="20" uuid="f92ca7fb-9a51-4109-b545-49982d4f7a3b"/>
+				<textFieldExpression><![CDATA[$F{comunes_tipo}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0">
+				<reportElement x="270" y="0" width="66" height="20" uuid="8ab44e82-f125-411d-8828-74be2610e4b3"/>
+				<textFieldExpression><![CDATA[$F{comunes_consumo}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0">
+				<reportElement x="352" y="0" width="54" height="20" uuid="ad4d1629-fc75-411b-b516-50d5de6c322f"/>
+				<textFieldExpression><![CDATA[$F{comunes_mes}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0">
+				<reportElement x="422" y="0" width="54" height="20" uuid="bfa580eb-6ff2-4bb6-b7d3-bf07add29862"/>
+				<textFieldExpression><![CDATA[$F{comunes_ano}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="493" y="0" width="72" height="20" uuid="b3c237e7-34b7-4fee-9095-249bfa0d650b"/>
+				<textFieldExpression><![CDATA[$F{comunes_vencimiento}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement x="580" y="0" width="72" height="20" uuid="589ed4ad-60cd-4eef-bbe1-8c98af10c3a3"/>
+				<textFieldExpression><![CDATA[$F{comunes_total_mes}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement x="670" y="0" width="82" height="20" uuid="da380949-e671-4228-8f50-2e04fed981c5"/>
+				<textFieldExpression><![CDATA[$F{comunes_saldo_anterior}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="34" width="80" height="20" uuid="cefe626a-9290-4ceb-ae41-223a571e7204"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="80" y="34" width="40" height="20" uuid="98bb8f82-ebcf-4db4-b81d-69cbfdb234b5"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<componentElement>
+				<reportElement x="652" y="4" width="100" height="50" uuid="4ff29595-14d2-4135-8c11-257a9783b28b"/>
+				<jr:DataMatrix xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" textPosition="bottom">
+					<jr:codeExpression><![CDATA["CODE VARTO INC"]]></jr:codeExpression>
+				</jr:DataMatrix>
+			</componentElement>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

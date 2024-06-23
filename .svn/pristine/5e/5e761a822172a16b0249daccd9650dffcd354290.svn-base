@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Adquisiciones" pageWidth="792" pageHeight="612" orientation="Landscape" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="dae7545f-38ed-4518-a5be-311efb44dcc3">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="59"/>
+	<queryString>
+		<![CDATA[SELECT
+     adquisiciones.`codigo_ad` AS adquisiciones_codigo_ad,
+     adquisiciones.`codigo_oc` AS adquisiciones_codigo_oc,
+     adquisiciones.`tipo_doc` AS adquisiciones_tipo_doc,
+     adquisiciones.`num_doc` AS adquisiciones_num_doc,
+     adquisiciones.`categoria` AS adquisiciones_categoria,
+     adquisiciones.`seccion` AS adquisiciones_seccion,
+     adquisiciones.`estado` AS adquisiciones_estado,
+     adquisiciones.`descripcion` AS adquisiciones_descripcion,
+     adquisiciones.`forma_pago` AS adquisiciones_forma_pago,
+     adquisiciones.`fecha` AS adquisiciones_fecha,
+     adquisiciones.`valor_total` AS adquisiciones_valor_total,
+     adquisiciones.`vida_util` AS adquisiciones_vida_util,
+     adquisiciones.`num_cheque` AS adquisiciones_num_cheque,
+     adquisiciones.`num_cuenta` AS adquisiciones_num_cuenta,
+     adquisiciones.`num_trans` AS adquisiciones_num_trans
+FROM
+     `adquisiciones` adquisiciones]]>
+	</queryString>
+	<field name="adquisiciones_codigo_ad" class="java.lang.String"/>
+	<field name="adquisiciones_codigo_oc" class="java.lang.String"/>
+	<field name="adquisiciones_tipo_doc" class="java.lang.String"/>
+	<field name="adquisiciones_num_doc" class="java.lang.Integer"/>
+	<field name="adquisiciones_categoria" class="java.lang.String"/>
+	<field name="adquisiciones_seccion" class="java.lang.String"/>
+	<field name="adquisiciones_estado" class="java.lang.String"/>
+	<field name="adquisiciones_descripcion" class="java.lang.String"/>
+	<field name="adquisiciones_forma_pago" class="java.lang.String"/>
+	<field name="adquisiciones_fecha" class="java.sql.Date"/>
+	<field name="adquisiciones_valor_total" class="java.lang.Integer"/>
+	<field name="adquisiciones_vida_util" class="java.lang.Integer"/>
+	<field name="adquisiciones_num_cheque" class="java.lang.Integer"/>
+	<field name="adquisiciones_num_cuenta" class="java.lang.Integer"/>
+	<field name="adquisiciones_num_trans" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="22" splitType="Stretch">
+			<textField pattern="dd MMMMM yyyy">
+				<reportElement x="652" y="0" width="100" height="20" uuid="8f032fce-9a1e-44bb-9225-c49e6598aa07"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="143" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="0" width="164" height="135" uuid="c95787e2-fb5c-4159-b3fe-2f8d2387c32d"/>
+				<imageExpression><![CDATA["C:\\Users\\Jose\\Documents\\NetBeansProjects\\mirador_frutillar\\src\\Principal\\images\\informe.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="288" y="52" width="177" height="32" uuid="73a53a36-e847-4231-ba4a-64c5f2b2826a"/>
+				<textElement>
+					<font size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Adquisiciones.]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="34" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="14" width="81" height="20" uuid="de958a07-82ca-4dfe-87c9-278aa681718b"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[C° AD]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="81" y="14" width="63" height="20" uuid="f27b5023-ff40-4236-b771-9456b0ccb6c4"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tipo Docto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="144" y="14" width="60" height="20" uuid="96592962-5885-438c-bad3-d68dbb1f6898"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[N° Docto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="204" y="14" width="64" height="20" uuid="33613e77-145d-4f7b-b9b2-c86c9734e63c"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Categoria]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="268" y="14" width="50" height="20" uuid="e3e86215-6f77-4012-ab6b-e4a47fcf1709"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sección]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="318" y="14" width="50" height="20" uuid="ac7a2a54-420d-4ea7-a94c-bafd51a7459f"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Estado]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="368" y="14" width="77" height="20" uuid="50d4ff3c-64a1-4021-abe4-2c46da3c75be"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Descripción]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="445" y="14" width="63" height="20" uuid="e18bfdf4-db37-483c-9363-32241c3d3d3c"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="508" y="14" width="49" height="20" uuid="c10bcdd7-7f7e-47e4-b7b3-4ec7245c5b27"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Vida Util]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="557" y="14" width="73" height="20" uuid="e3f9f119-ad9f-4bb5-8eae-dca381ed32b5"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Forma Pago]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="630" y="14" width="62" height="20" uuid="fdb4c804-a600-4046-b582-f3498b2a45f9"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ValorTotal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="690" y="14" width="62" height="20" uuid="a7618098-2cd8-41f4-a948-a4cf64035a9a"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Neto]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="81" height="20" uuid="9df5a334-11b5-4c32-be90-be27829a4a20"/>
+				<textFieldExpression><![CDATA[$F{adquisiciones_codigo_ad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="83" y="0" width="61" height="20" uuid="56ba3c02-afd2-4338-bdc9-6d3f52cfb21c"/>
+				<textFieldExpression><![CDATA[$F{adquisiciones_tipo_doc}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="144" y="0" width="60" height="20" uuid="f46e11ec-6cfd-4282-a1de-4d7d15d7707e"/>
+				<textFieldExpression><![CDATA[$F{adquisiciones_num_doc}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="204" y="0" width="64" height="20" uuid="1c4eaeef-c31d-45b4-bb0b-33c6bd00e525"/>
+				<textFieldExpression><![CDATA[$F{adquisiciones_categoria}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="268" y="0" width="50" height="20" uuid="767e1bad-ca1b-487f-99b0-eb62b191b328"/>
+				<textFieldExpression><![CDATA[$F{adquisiciones_seccion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="318" y="0" width="50" height="20" uuid="25f481dc-b3df-426e-a57d-9cb335bf3deb"/>
+				<textFieldExpression><![CDATA[$F{adquisiciones_estado}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="368" y="0" width="77" height="20" uuid="7703418b-7b67-40ec-be3b-7535809e8eb3"/>
+				<textFieldExpression><![CDATA[$F{adquisiciones_descripcion}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd-MMM-yyyy">
+				<reportElement x="445" y="0" width="63" height="20" uuid="5d9c6c70-a4ce-4229-98d2-dcffa218802c"/>
+				<textFieldExpression><![CDATA[$F{adquisiciones_fecha}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement x="508" y="0" width="49" height="20" uuid="569e8fc6-c86a-41a1-b17c-01de17f2e72f"/>
+				<textFieldExpression><![CDATA[$F{adquisiciones_vida_util}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement x="557" y="0" width="73" height="20" uuid="731db8c5-5acb-40ef-8f57-796ded068450"/>
+				<textFieldExpression><![CDATA[$F{adquisiciones_forma_pago}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement x="630" y="0" width="62" height="20" uuid="4bde879e-397c-4f45-bc3e-7c4da7c6f490"/>
+				<textFieldExpression><![CDATA[$F{adquisiciones_valor_total}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement x="690" y="0" width="62" height="20" uuid="18d42d11-84a9-49fb-abea-1bb77990820b"/>
+				<textFieldExpression><![CDATA[$F{adquisiciones_valor_total}/1.19]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="34" width="80" height="20" uuid="662ac249-6fb9-4f48-8df7-51f63333d2f2"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<componentElement>
+				<reportElement x="652" y="4" width="100" height="50" uuid="ce0f431e-1b09-49c3-9af1-a936e7aae108"/>
+				<jr:DataMatrix xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" textPosition="bottom">
+					<jr:codeExpression><![CDATA["CODE VARTO INC"]]></jr:codeExpression>
+				</jr:DataMatrix>
+			</componentElement>
+			<textField evaluationTime="Report">
+				<reportElement x="83" y="34" width="40" height="20" uuid="bba8786f-0bd7-4588-9df9-67138a96a027"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

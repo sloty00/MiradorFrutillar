@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="792" pageHeight="612" orientation="Landscape" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7b87c3bd-1003-4787-958d-12ac6a0b048e">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT * FROM `maquinas` where tipo = 'Adquisicion']]>
+	</queryString>
+	<field name="num_folio" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="patente" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tipo_vehiculo" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="marca" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="modelo" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="año" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="num_chasis" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fecha_ad" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="km_inicial" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="valor" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="vida_util" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="26" splitType="Stretch">
+			<textField pattern="MM/dd/yyyy">
+				<reportElement x="652" y="6" width="100" height="20" uuid="d5d2e53a-562a-4a39-8b33-2398c3022e45"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="139" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="0" width="164" height="135" uuid="cd21a906-d66e-435f-99c3-1de1e4099c48"/>
+				<imageExpression><![CDATA["C:\\Users\\Jose\\Documents\\NetBeansProjects\\mirador_frutillar\\src\\Principal\\images\\informe.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="237" y="53" width="292" height="32" uuid="a274c763-4347-4a59-97e5-ab5699bc3be3"/>
+				<textElement>
+					<font size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Adquisiciones Maquinas]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="15" width="100" height="20" uuid="4303f69d-14ba-458a-ae81-48d70d7276fe"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[N° Folio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="15" width="74" height="20" uuid="279b4bf8-456e-46e7-a404-845c01b5945b"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Patente]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="174" y="15" width="74" height="20" uuid="fcbdf6de-b222-4caf-b01b-991f9ae265d3"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[F° Adquisición]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="248" y="15" width="100" height="20" uuid="071640f7-53f2-40e1-948e-92c112072d8f"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Tipo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="348" y="15" width="67" height="20" uuid="1c2fd287-830d-4bfc-a1ed-53c0e7821390"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Marca]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="415" y="15" width="65" height="20" uuid="fddb8cc9-b4a7-4458-b807-6438bf392f7b"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Modelo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="480" y="15" width="66" height="20" uuid="a4608d56-a4b6-4803-90a4-5ec433a62a98"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Año]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="546" y="15" width="70" height="20" uuid="4a1aac70-8f64-40ee-ba2a-f87985edfce0"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[N° Chasis]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="616" y="15" width="62" height="20" uuid="5b534f43-27bf-4deb-bb5d-9b063bb2c469"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Km Inicial]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="678" y="15" width="74" height="20" uuid="4b62a28a-a699-4a5e-bd39-515b9c7a53e8"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Valor]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="32" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="100" height="20" uuid="4850d214-ffc9-4272-ba6c-447a2b2ea9f6"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{num_folio}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="0" width="74" height="20" uuid="0bb5ddf9-5814-496e-875d-e614661f31e8"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{patente}]]></textFieldExpression>
+			</textField>
+			<textField pattern="MM/dd/yyyy">
+				<reportElement x="174" y="0" width="74" height="20" uuid="37fe2471-fd97-43f3-861c-370f17c8d397"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{fecha_ad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="248" y="0" width="100" height="20" uuid="20378af7-b99e-4587-9705-28bbe81584b5"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{tipo_vehiculo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="348" y="0" width="67" height="20" uuid="ffff8a17-2d16-43a6-a684-fe44b332ec63"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{marca}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="415" y="0" width="65" height="20" uuid="9dd38f8e-2361-48f8-9d50-afa8dda6b6a5"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{modelo}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement x="480" y="0" width="66" height="20" uuid="67ff778e-8845-482c-842d-132a5f543717"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{año}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="546" y="0" width="70" height="20" uuid="8b357d34-811b-4654-9191-0a70532fb322"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{num_chasis}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="616" y="0" width="62" height="20" uuid="9be34b21-d9d2-42c0-b727-13b11a77be89"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{km_inicial}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="678" y="0" width="74" height="20" uuid="1022985c-2900-4320-9cc3-3006081da704"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{valor}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="5" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="51" splitType="Stretch">
+			<componentElement>
+				<reportElement x="652" y="0" width="100" height="50" uuid="945e6efb-3496-42bc-8e02-ffdfb6cb159d"/>
+				<jr:DataMatrix xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" textPosition="bottom">
+					<jr:codeExpression><![CDATA["CODE VARTO INC"]]></jr:codeExpression>
+				</jr:DataMatrix>
+			</componentElement>
+			<textField>
+				<reportElement x="0" y="0" width="80" height="20" uuid="12c85b9d-0928-4f14-8d3b-d190ec61936f"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Pagina "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="80" y="0" width="40" height="20" uuid="6a868d3f-9bdb-4b26-bc06-9f7259347d4a"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="9" splitType="Stretch"/>
+	</summary>
+</jasperReport>

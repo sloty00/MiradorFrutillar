@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Productos Stock" language="groovy" pageWidth="792" pageHeight="612" orientation="Landscape" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3b5273d5-ba74-4fea-b376-9d64d0669027">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     productos.`id` AS productos_id,
+     productos.`codigo_prod` AS productos_codigo_prod,
+     productos.`descripcion` AS productos_descripcion,
+     productos.`lote` AS productos_lote,
+     productos.`cantidad` AS productos_cantidad,
+     productos.`fecha` AS productos_fecha,
+     productos.`valor_compra` AS productos_valor_compra,
+     productos.`valor_venta` AS productos_valor_venta
+FROM
+     `productos` productos]]>
+	</queryString>
+	<field name="productos_id" class="java.lang.Integer"/>
+	<field name="productos_codigo_prod" class="java.lang.Integer"/>
+	<field name="productos_descripcion" class="java.lang.String"/>
+	<field name="productos_lote" class="java.lang.String"/>
+	<field name="productos_cantidad" class="java.lang.Integer"/>
+	<field name="productos_fecha" class="java.sql.Date"/>
+	<field name="productos_valor_compra" class="java.lang.Integer"/>
+	<field name="productos_valor_venta" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="20" splitType="Stretch">
+			<textField pattern="MM/dd/yyyy">
+				<reportElement x="652" y="0" width="100" height="20" uuid="d76e6157-04d2-46a3-acf0-00871c1e540c"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="141" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="0" width="164" height="135" uuid="df9ffe64-180b-47f9-beee-0e7611ead00f"/>
+				<imageExpression><![CDATA["C:\\Users\\Jose\\Documents\\NetBeansProjects\\mirador_frutillar\\src\\Principal\\images\\informe.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="278" y="49" width="204" height="32" uuid="6f34ee2a-a7a5-42d3-940e-c71b033e4262"/>
+				<textElement>
+					<font size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Productos Stock.]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="32" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="12" width="100" height="20" uuid="9e91f69f-7f1c-4f43-b449-c34fbad9ecec"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Codigo Prod,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="12" width="100" height="20" uuid="d0755124-032c-4358-9fc6-bbeeb280f544"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Descripción]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="211" y="12" width="100" height="20" uuid="a8eae838-4905-41a7-a698-0211ffcfe9aa"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Lote]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="324" y="12" width="100" height="20" uuid="a64b8ccb-6ef1-4162-a5f2-17c91f86a6c3"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cantidad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="436" y="12" width="100" height="20" uuid="4876d887-dc25-4ebf-92c0-1851bafa0824"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="552" y="12" width="100" height="20" uuid="280d8d59-94f3-4952-a38d-c6fd27668124"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Valor Compra]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="652" y="12" width="100" height="20" uuid="9c2abd90-236a-42ac-bb72-92324da2a665"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Valor Venta]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="32" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="100" height="20" uuid="c40cc32a-96e3-4c21-9065-4eca17b03085"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{productos_codigo_prod}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="0" width="100" height="20" uuid="5e011d89-01f9-4283-8522-b7b0daffa4d3"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{productos_descripcion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="211" y="0" width="100" height="20" uuid="ba2f4f91-36f2-4fda-a0c0-683b0d163422"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{productos_lote}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0">
+				<reportElement x="324" y="0" width="100" height="20" uuid="5e86aa43-d229-4d99-ac5e-74b8ba244fe0"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{productos_cantidad}]]></textFieldExpression>
+			</textField>
+			<textField pattern="MM/dd/yyyy">
+				<reportElement x="436" y="0" width="100" height="20" uuid="9319aeb5-04b2-442a-9dee-ac1c604a384f"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{productos_fecha}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement x="552" y="0" width="100" height="20" uuid="46bae64e-db25-49a7-a08d-b048d2c0efe9"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{productos_valor_compra}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement x="652" y="0" width="100" height="20" uuid="c0aef3a3-f9ac-4a07-9dec-e98311a616a6"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{productos_valor_venta}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="14" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="50" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="30" width="80" height="20" uuid="10313463-6148-4a90-af43-09fd907bc6fc"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Pagina "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<componentElement>
+				<reportElement x="652" y="0" width="100" height="50" uuid="e80e14f7-278e-4bf9-8872-d1d8d5d9c954"/>
+				<jr:DataMatrix xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" textPosition="bottom">
+					<jr:codeExpression><![CDATA["CODE VARTO INC"]]></jr:codeExpression>
+				</jr:DataMatrix>
+			</componentElement>
+			<textField evaluationTime="Report">
+				<reportElement x="80" y="30" width="40" height="20" uuid="e9c85ec5-46d3-47f7-a4b7-76ca76592d42"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="8" splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="792" pageHeight="612" orientation="Landscape" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="dce40ddb-053d-4532-a13e-a28587297a46">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+     detalleb.`num_ingreso` AS detalleb_num_ingreso,
+     detalleb.`codigo_prod` AS detalleb_codigo_prod,
+     detalleb.`tipo_doc` AS detalleb_tipo_doc,
+     detalleb.`num_doc` AS detalleb_num_doc,
+     detalleb.`descripcion` AS detalleb_descripcion,
+     detalleb.`fecha` AS detalleb_fecha,
+     detalleb.`cantidad` AS detalleb_cantidad,
+     detalleb.`neto` AS detalleb_neto,
+     detalleb.`forma_pago` AS detalleb_forma_pago,
+     detalleb.`num_doctob` AS detalleb_num_doctob,
+     detalleb.`num_cuentab` AS detalleb_num_cuentab,
+     detalleb.`num_transb` AS detalleb_num_transb
+FROM
+     `detalleb` detalleb]]>
+	</queryString>
+	<field name="detalleb_num_ingreso" class="java.lang.String"/>
+	<field name="detalleb_codigo_prod" class="java.lang.Integer"/>
+	<field name="detalleb_tipo_doc" class="java.lang.String"/>
+	<field name="detalleb_num_doc" class="java.lang.Integer"/>
+	<field name="detalleb_descripcion" class="java.lang.String"/>
+	<field name="detalleb_fecha" class="java.sql.Date"/>
+	<field name="detalleb_cantidad" class="java.lang.Integer"/>
+	<field name="detalleb_neto" class="java.lang.Integer"/>
+	<field name="detalleb_forma_pago" class="java.lang.String"/>
+	<field name="detalleb_num_doctob" class="java.lang.Integer"/>
+	<field name="detalleb_num_cuentab" class="java.lang.Integer"/>
+	<field name="detalleb_num_transb" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="21" splitType="Stretch">
+			<textField pattern="MM/dd/yyyy">
+				<reportElement x="652" y="0" width="100" height="20" uuid="e62c8674-8ca3-4ca7-9371-338c77353f3f"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="144" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="0" width="164" height="135" uuid="5678fb72-0632-4f78-924a-cdbb52698a06"/>
+				<imageExpression><![CDATA["C:\\Users\\Jose\\Documents\\NetBeansProjects\\mirador_frutillar\\src\\Principal\\images\\informe.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="278" y="51" width="197" height="32" uuid="39b5edb3-60e7-41d5-9e2e-dd0df769a830"/>
+				<textElement>
+					<font size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Reporte Boletas.]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="29" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="124" height="20" uuid="699f362e-c749-421e-8ca5-2bbfde4b0c4c"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[N° Ingreso]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="124" y="0" width="77" height="20" uuid="9e9fc79c-e566-4f00-9e1e-3bd211f79e1c"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[C° Producto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="201" y="0" width="69" height="20" uuid="9eba9fc9-845c-439b-96fa-0afb2f3ead1d"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[T° Docto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="270" y="0" width="76" height="20" uuid="b08606e2-3aad-45b8-9c92-fb31ad3d196d"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[N° Docto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="346" y="0" width="129" height="20" uuid="7a99c6c1-8365-4808-bb24-4df53428740d"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Descripcion]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="475" y="0" width="62" height="20" uuid="e4634caf-7c8f-447f-8e2c-1e209f3c0d74"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="537" y="0" width="56" height="20" uuid="132feb2d-1b28-4010-884c-82a7ad9b4801"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cantidad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="593" y="0" width="71" height="20" uuid="2ced7402-6725-4eca-b46d-142de60f9b3e"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Neto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="664" y="0" width="88" height="20" uuid="c5b83a1a-2810-4783-9f57-6930193782e1"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Forma Pago]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="26" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="124" height="20" uuid="6ff6bed0-d269-42a0-827b-7ec871032327"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{detalleb_num_ingreso}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="124" y="0" width="77" height="20" uuid="b3333300-700c-4162-a241-4079c7fa2ecc"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{detalleb_codigo_prod}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="201" y="0" width="69" height="20" uuid="1b8d28a3-91db-4ff0-b229-ea645a88d5fe"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{detalleb_tipo_doc}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="270" y="0" width="76" height="20" uuid="99b4075d-c739-4898-a1ed-f6b62cdb3619"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{detalleb_num_doc}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="346" y="0" width="129" height="20" uuid="ab1e4cbd-bb41-4c73-b3d1-8496510c6d15"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{detalleb_descripcion}]]></textFieldExpression>
+			</textField>
+			<textField pattern="yyyy/MM/dd">
+				<reportElement x="475" y="0" width="62" height="20" uuid="9f03e179-06b2-4494-bae4-b94170ee49ad"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{detalleb_fecha}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0">
+				<reportElement x="537" y="0" width="56" height="20" uuid="8e4e8cf7-7fa7-4fef-a615-a6a101e102e9"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{detalleb_cantidad}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement x="593" y="0" width="71" height="20" uuid="c0b13b7d-caf2-4660-8f1c-8f9c94b984ad"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{detalleb_neto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="664" y="0" width="88" height="20" uuid="38c16189-948f-41f3-97a1-86dca23545c1"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{detalleb_forma_pago}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="6" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<componentElement>
+				<reportElement x="652" y="0" width="100" height="50" uuid="c96337f4-4067-49cf-a5dd-be4993c4aac5"/>
+				<jr:DataMatrix xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" textPosition="bottom">
+					<jr:codeExpression><![CDATA["CODE VARTO INC"]]></jr:codeExpression>
+				</jr:DataMatrix>
+			</componentElement>
+			<textField>
+				<reportElement x="0" y="30" width="80" height="20" uuid="bcfa98cd-6220-4047-af42-f6b0226ca881"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Pagina "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="80" y="30" width="40" height="20" uuid="be5df611-1471-42d2-a844-47a07532448e"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="7" splitType="Stretch"/>
+	</summary>
+</jasperReport>

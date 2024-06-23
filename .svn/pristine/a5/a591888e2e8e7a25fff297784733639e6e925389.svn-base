@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="1760" pageHeight="1190" orientation="Landscape" columnWidth="1720" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="492b4b35-b479-4a18-bb4f-63106bce54ca">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="137"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+     detallef.`num_ingreso` AS detallef_num_ingreso,
+     detallef.`codigo_prod` AS detallef_codigo_prod,
+     detallef.`tipo_doc` AS detallef_tipo_doc,
+     detallef.`num_doc` AS detallef_num_doc,
+     detallef.`cliente` AS detallef_cliente,
+     detallef.`direccion` AS detallef_direccion,
+     detallef.`rut` AS detallef_rut,
+     detallef.`fecha` AS detallef_fecha,
+     detallef.`ciudad` AS detallef_ciudad,
+     detallef.`provincia` AS detallef_provincia,
+     detallef.`giro` AS detallef_giro,
+     detallef.`fono` AS detallef_fono,
+     detallef.`despacho` AS detallef_despacho,
+     detallef.`descripcion` AS detallef_descripcion,
+     detallef.`cantidad` AS detallef_cantidad,
+     detallef.`neto` AS detallef_neto,
+     detallef.`forma_pago` AS detallef_forma_pago,
+     detallef.`num_doctof` AS detallef_num_doctof,
+     detallef.`num_cuentaf` AS detallef_num_cuentaf,
+     detallef.`num_transf` AS detallef_num_transf
+FROM
+     `detallef` detallef]]>
+	</queryString>
+	<field name="detallef_num_ingreso" class="java.lang.String"/>
+	<field name="detallef_codigo_prod" class="java.lang.Integer"/>
+	<field name="detallef_tipo_doc" class="java.lang.String"/>
+	<field name="detallef_num_doc" class="java.lang.Integer"/>
+	<field name="detallef_cliente" class="java.lang.String"/>
+	<field name="detallef_direccion" class="java.lang.String"/>
+	<field name="detallef_rut" class="java.lang.String"/>
+	<field name="detallef_fecha" class="java.sql.Date"/>
+	<field name="detallef_ciudad" class="java.lang.String"/>
+	<field name="detallef_provincia" class="java.lang.String"/>
+	<field name="detallef_giro" class="java.lang.String"/>
+	<field name="detallef_fono" class="java.lang.Integer"/>
+	<field name="detallef_despacho" class="java.lang.String"/>
+	<field name="detallef_descripcion" class="java.lang.String"/>
+	<field name="detallef_cantidad" class="java.lang.Integer"/>
+	<field name="detallef_neto" class="java.lang.Integer"/>
+	<field name="detallef_forma_pago" class="java.lang.String"/>
+	<field name="detallef_num_doctof" class="java.lang.Integer"/>
+	<field name="detallef_num_cuentaf" class="java.lang.Integer"/>
+	<field name="detallef_num_transf" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="24" splitType="Stretch">
+			<textField pattern="MM/dd/yyyy">
+				<reportElement x="1620" y="4" width="100" height="20" uuid="966417fa-313e-42d8-88ea-d5d7c6c6d2ea"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="140" splitType="Stretch">
+			<image>
+				<reportElement x="-1" y="0" width="164" height="135" uuid="c1339d39-fbab-4feb-a3e5-ebb7dcbbc3b7"/>
+				<imageExpression><![CDATA["C:\\Users\\Jose\\Documents\\NetBeansProjects\\mirador_frutillar\\src\\Principal\\images\\informe.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="743" y="52" width="222" height="32" uuid="856d074e-e2f5-49b6-8828-49d3e87829a9"/>
+				<textElement>
+					<font size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Reportes Facturas.]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="66" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="41" width="100" height="20" uuid="8616db2d-a697-47b4-848d-e0582db5a8bc"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[N° Ingreso]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="41" width="100" height="20" uuid="598b3fd5-9b57-463e-9ffe-6e10d00489fd"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[C° Producto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="200" y="41" width="100" height="20" uuid="e6033fac-e3f1-4aa8-a97f-b35c3404a28c"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[T° Docto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="300" y="41" width="100" height="20" uuid="0a61f4f2-34d4-455a-a52f-32e23c7099e3"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[N° Docto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="400" y="41" width="100" height="20" uuid="99cea1aa-5266-4b16-a49a-99321eb6197d"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cliente]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="500" y="41" width="100" height="20" uuid="875e0270-9de8-405d-928f-fadbd7ac3a1b"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Direccion]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="600" y="41" width="100" height="20" uuid="e4f3c65b-e27e-460e-a465-797f22774ccc"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Rut]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="700" y="41" width="100" height="20" uuid="840152a3-3dcb-4f2e-a130-855d73a8ff89"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="800" y="41" width="100" height="20" uuid="8abe61a7-64ec-4d89-9277-2a3089f3a703"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Ciudad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="900" y="41" width="100" height="20" uuid="0a0b9b4d-8a5d-423c-a5a6-032f7585bbb8"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Provincia]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1000" y="41" width="100" height="20" uuid="00e711da-a3f3-4cce-b519-ae13f0e5db78"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Giro]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1100" y="41" width="100" height="20" uuid="cf264849-da0c-41dd-b1b6-984cd3a00c64"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Telefono]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1200" y="41" width="100" height="20" uuid="028f643a-cec1-4873-a600-3d03ddf0a953"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Despacho]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1300" y="41" width="100" height="20" uuid="d05f4c5a-699b-4288-a3df-388c1d5b740b"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Descripcion]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1400" y="41" width="100" height="20" uuid="93ec05ac-547b-4e2f-9bd3-a53ae23652ce"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cantidad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1500" y="41" width="100" height="20" uuid="07f760a8-c2fa-4771-98be-d6897bf341ac"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Neto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1600" y="41" width="100" height="20" uuid="973d4dba-a0bd-4284-82ab-80203688bd7f"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Forma de Pago]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="24" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="100" height="20" uuid="65e2f1b6-0b3e-4b5c-9531-7620e3778337"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{detallef_num_ingreso}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="0" width="100" height="20" uuid="11785d8f-b42b-4202-ad8f-0bab67ee3521"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{detallef_codigo_prod}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="200" y="0" width="100" height="20" uuid="739a2381-77e7-4ff7-bcac-844da193adf6"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{detallef_tipo_doc}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="300" y="0" width="100" height="20" uuid="d934bb53-9fd7-4f01-81b4-cd11980cd6c9"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{detallef_num_doc}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="400" y="0" width="100" height="20" uuid="a78be7c9-3962-4f57-9c6f-c230657bdd1c"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{detallef_cliente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="500" y="0" width="100" height="20" uuid="b960eae8-ae11-4c6e-99e7-06f479fe903a"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{detallef_direccion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="600" y="0" width="100" height="20" uuid="5bee52ec-c731-40a0-b13e-7e5c83219c2d"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{detallef_rut}]]></textFieldExpression>
+			</textField>
+			<textField pattern="yyyy/MM/dd">
+				<reportElement x="700" y="0" width="100" height="20" uuid="821152b4-b942-438d-9bdf-36f69cdc86e0"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{detallef_fecha}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="800" y="0" width="100" height="20" uuid="916e9517-5c63-4416-a6a8-08d6454bcf18"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{detallef_ciudad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="900" y="0" width="100" height="20" uuid="9a3272b8-dccf-403f-bf6b-4c0791c0ac4a"/>
+				<textElement textAlignment="Center">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{detallef_provincia}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1000" y="0" width="100" height="20" uuid="9aff4423-9735-4c21-a57f-d166709dbe0e"/>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{detallef_giro}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1100" y="0" width="100" height="20" uuid="1896a33f-a301-48a5-8716-e31168a19ffa"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{detallef_fono}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1200" y="0" width="100" height="20" uuid="9982ce75-ce72-402c-b5d7-fc2a2727235f"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{detallef_despacho}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1300" y="0" width="100" height="20" uuid="d984cdd3-8f0c-48e4-9152-3b4b32a4d014"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{detallef_descripcion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1400" y="0" width="100" height="20" uuid="c1ad583a-4e73-4cdd-9e62-b1983aa3631c"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{detallef_cantidad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1500" y="0" width="100" height="20" uuid="571dc835-e83c-49bf-983a-9afc81e1092b"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{detallef_neto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1600" y="0" width="100" height="20" uuid="0306925e-2936-4e74-bfd5-26159cc1b514"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{detallef_forma_pago}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="6" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField evaluationTime="Report">
+				<reportElement x="80" y="34" width="40" height="20" uuid="0b797291-1dde-4900-b89d-a574c4602d4e"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="34" width="80" height="20" uuid="0da32ff3-4c40-4a6b-bd70-0c12bd662ca9"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Pagina "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<componentElement>
+				<reportElement x="1620" y="4" width="100" height="50" uuid="28dc4fdf-ef93-4ba6-9d91-949cf6c97fb7"/>
+				<jr:DataMatrix xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" textPosition="bottom">
+					<jr:codeExpression><![CDATA["CODE VARTO INC"]]></jr:codeExpression>
+				</jr:DataMatrix>
+			</componentElement>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="5" splitType="Stretch"/>
+	</summary>
+</jasperReport>

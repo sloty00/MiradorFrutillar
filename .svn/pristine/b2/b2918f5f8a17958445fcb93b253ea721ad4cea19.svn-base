@@ -1,0 +1,500 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package Empleados;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import javax.swing.RowFilter;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
+/**
+ *
+ * @author Jose
+ */
+public class Empleados_C extends javax.swing.JInternalFrame {
+    private TableRowSorter trsFiltro;
+    DefaultTableModel model;
+    Conexion.conexion conexion = new Conexion.conexion();
+    Connection cn = conexion.connect();
+    Statement sent;
+    /**
+     * Creates new form Empleados_C
+     */
+    public Empleados_C() {
+        initComponents();
+        llenar_tablaempleados();
+        llenar_tablasueldo();
+    }
+    
+    void llenar_tablaempleados() {
+        try {
+            cn = conexion.connect();
+            String [] titulos = {"Rut","Nombre Completo","Fecha Ingreso","Sexo","Estado Civil","Direccion","Ciudad", "Telefono", "E-mail","Salud","Afp","Cargo","Sueldo Bruto","Vencimiento Contrato"};
+            String sql = "SELECT * FROM empleado";
+            model = new DefaultTableModel(null, titulos);
+            sent = cn.createStatement();
+            ResultSet rs = sent.executeQuery(sql);
+            String [] fila = new String [14];
+            while (rs.next()){
+                fila[0]=rs.getString("rut");
+                fila[1]=(rs.getString("nombres").concat(" ").concat(rs.getString("apellidos")));
+                fila[2]=rs.getString("fecha_ingreso");
+                fila[3]=rs.getString("sexo");
+                fila[4]=rs.getString("estado_civil");
+                fila[5]=rs.getString("direccion");
+                fila[6]=rs.getString("ciudad");
+                fila[7]=rs.getString("telefono");
+                fila[8]=rs.getString("mail");
+                fila[9]=rs.getString("salud");
+                fila[10]=rs.getString("afp");
+                fila[11]=rs.getString("cargo");
+                fila[12]=rs.getString("sueldo_bruto");
+                fila[13]=rs.getString("venc_contra");
+            model.addRow(fila);
+            }
+            jtbl_empleados.setModel(model);
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    void llenar_tablasueldo() {
+        try {
+            cn = conexion.connect();
+            String [] titulos = {"Codigo","Rut","Nombre Completo","Mes","Año","AFP","Salud", "HEO", "HNT","Bonificacion","Locomocion","Aanticipos","Sueldo Bruto","Base Imponible","Sueldo Liquido"};
+            String sql = "select su.cod_folio, su.rut, emp.nombres, emp.apellidos, su.mes, su.año, su.afp, su.salud, su.heo, su.hnt, su.bonificacion, su.locomocion, su.anticipos, su.sueldo_bruto from sueldo su, empleado emp where su.rut = emp.rut";
+            int mes;
+            mes = 180;
+            int semana;
+            semana = 45;
+            model = new DefaultTableModel(null, titulos);
+            sent = cn.createStatement();
+            ResultSet rs = sent.executeQuery(sql);
+            String [] fila = new String [15];
+            while (rs.next()){
+                fila[0]=rs.getString("cod_folio");
+                fila[1]=rs.getString("rut");
+                fila[2]=(rs.getString("nombres").concat(" ").concat(rs.getString("apellidos")));
+                fila[3]=rs.getString("mes");
+                fila[4]=rs.getString("año");
+                fila[5]=rs.getString("afp");
+                fila[6]=rs.getString("salud");
+                fila[7]=rs.getString("heo");
+                fila[8]=rs.getString("hnt");
+                fila[9]=rs.getString("bonificacion");
+                fila[10]=rs.getString("locomocion");
+                fila[11]=rs.getString("anticipos");
+                
+                //Calculos de horas extras sobre sueldo
+                Integer heo = Integer.parseInt(rs.getString("heo"));
+                Integer sueldo_bruto = Integer.parseInt(rs.getString("sueldo_bruto"));
+                Integer hora_trabajo = sueldo_bruto / mes;
+                Integer hora_trabajor = hora_trabajo*heo;
+                Integer hora_extra_calcu = hora_trabajor*50/100;
+                Integer hora_extra_calcu2 = hora_extra_calcu+hora_trabajor;
+                Integer sueldo_heo = hora_extra_calcu2;
+
+                //Calculos de locomocion
+                Integer locomocion = Integer.parseInt(rs.getString("locomocion"));
+                Integer sueldo_locomocion = locomocion;
+                
+                
+                //Calculosde Bonificacion
+                Integer bonos = Integer.parseInt(rs.getString("bonificacion"));
+                Integer sueldo_bonificacion = bonos;
+                
+                //Calculo de Base Imponible (Total Haberes)
+                Integer base = sueldo_heo + sueldo_bonificacion + sueldo_locomocion;
+                Integer base_imponible = base + sueldo_bruto;
+                String total_haberes = Integer.toString(base_imponible);
+                
+                //Calculo resta de haberes
+                Integer hnt = Integer.parseInt(rs.getString("hnt"));
+                Integer HNT = hora_trabajo * hnt;
+                Integer sueldo_hnt = HNT;
+                
+                //Calculo resta AFP
+                Integer afp = Integer.parseInt(rs.getString("afp"));
+                Integer AFP = base_imponible * afp / 100;
+                Integer sueldo_afp = AFP;
+                
+                //Calculo resta Salud
+                Integer salud = Integer.parseInt(rs.getString("salud"));
+                Integer SALUD = base_imponible * salud / 100;
+                Integer sueldo_salud = SALUD;
+                
+                //Calculo de resta Anticipo
+                Integer anticipo = Integer.parseInt(rs.getString("anticipos"));
+                Integer ANTICIPO = anticipo;
+                
+                //Calculo de Sueldo Liquido
+                Integer sueldo_liq = sueldo_afp + sueldo_salud + sueldo_hnt + ANTICIPO;
+                Integer sueldo_LIQ = base_imponible - sueldo_liq;
+                String sueldo_liquido = Integer.toString(sueldo_LIQ);
+                
+                fila[12]=rs.getString("sueldo_bruto");
+                fila[13]=(total_haberes);
+                fila[14]=(sueldo_liquido);
+            model.addRow(fila);
+            }
+            jtbl_sueldo.setModel(model);
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void filtro_emple() {
+        
+        int columnaABuscar = 0;
+        if (jcbx_empleados.getSelectedItem() == "Rut Empleado") {
+            columnaABuscar = 0;
+        }
+        if (jcbx_empleados.getSelectedItem() == "Nombre Completo") {
+            columnaABuscar = 1;
+        }
+        if (jcbx_empleados.getSelectedItem() == "Sexo Empleados") {
+            columnaABuscar = 3;
+        }
+        if (jcbx_empleados.getSelectedItem() == "Estado Civil") {
+            columnaABuscar = 4;
+        }
+        if (jcbx_empleados.getSelectedItem() == "Direccion Empleado") {
+            columnaABuscar = 5;
+        }
+        if (jcbx_empleados.getSelectedItem() == "Ciudad Empleados") {
+            columnaABuscar = 6;
+        }
+        if (jcbx_empleados.getSelectedItem() == "Telefono Empleado") {
+            columnaABuscar = 7;
+        }
+        if (jcbx_empleados.getSelectedItem() == "E-mail Empleado") {
+            columnaABuscar = 8;
+        }
+        if (jcbx_empleados.getSelectedItem() == "Salud Empleados") {
+            columnaABuscar = 9;
+        }
+        if (jcbx_empleados.getSelectedItem() == "AFP Empleados") {
+            columnaABuscar = 10;
+        }
+        if (jcbx_empleados.getSelectedItem() == "Cargo Empleados") {
+            columnaABuscar = 11;
+        }
+        trsFiltro.setRowFilter(RowFilter.regexFilter(txt_empleados.getText(), columnaABuscar));
+    }
+    
+    public void filtro_sueldo() {
+        
+        int columnaABuscar = 1;
+        if (jcbx_sueldo.getSelectedItem() == "Rut Empleado") {
+            columnaABuscar = 1;
+        }
+        if (jcbx_sueldo.getSelectedItem().toString() == "Nombre Completo") {
+            columnaABuscar = 2;
+        }
+        if (jcbx_sueldo.getSelectedItem() == "Mes Empleados") {
+            columnaABuscar = 3;
+        }
+        if (jcbx_sueldo.getSelectedItem() == "Año Empleados") {
+            columnaABuscar = 4;
+        }
+        trsFiltro.setRowFilter(RowFilter.regexFilter(txt_sueldo.getText(), columnaABuscar));
+    }
+
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel3 = new javax.swing.JPanel();
+        jPanel12 = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        txt_empleados = new javax.swing.JTextField();
+        jcbx_empleados = new javax.swing.JComboBox<>();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jtbl_empleados = new javax.swing.JTable();
+        jPanel4 = new javax.swing.JPanel();
+        jPanel13 = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        txt_sueldo = new javax.swing.JTextField();
+        jcbx_sueldo = new javax.swing.JComboBox<>();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        jtbl_sueldo = new javax.swing.JTable();
+
+        setBackground(java.awt.SystemColor.activeCaption);
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
+        setResizable(true);
+        setTitle("Consulta de Empleados");
+        getContentPane().setLayout(new java.awt.CardLayout());
+
+        jPanel1.setBackground(java.awt.SystemColor.activeCaption);
+
+        jPanel2.setBackground(java.awt.SystemColor.activeCaption);
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Principal/images/empleado.png"))); // NOI18N
+        jLabel1.setText("Consulta de Empleados");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(jLabel1)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel1)
+        );
+
+        jPanel3.setBackground(java.awt.SystemColor.activeCaption);
+
+        jPanel12.setBackground(java.awt.SystemColor.activeCaption);
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel8.setText("BUSQUEDA:");
+
+        txt_empleados.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        txt_empleados.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_empleadosKeyTyped(evt);
+            }
+        });
+
+        jcbx_empleados.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jcbx_empleados.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Rut Empleado", "Nombre Completo", "Sexo Empleados", "Estado Civil", "Direccion Empleado", "Ciudad Empleados", "Telefono Empleado", "E-mail Empleado", "Salud Empleados", "AFP Empleados", "Cargo Empleados" }));
+
+        javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
+        jPanel12.setLayout(jPanel12Layout);
+        jPanel12Layout.setHorizontalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel12Layout.createSequentialGroup()
+                .addGap(60, 60, 60)
+                .addComponent(jLabel8)
+                .addGap(18, 18, 18)
+                .addComponent(jcbx_empleados, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(txt_empleados, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(143, Short.MAX_VALUE))
+        );
+        jPanel12Layout.setVerticalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel12Layout.createSequentialGroup()
+                .addGap(44, 44, 44)
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(txt_empleados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jcbx_empleados, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(44, Short.MAX_VALUE))
+        );
+
+        jtbl_empleados.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jtbl_empleados.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane5.setViewportView(jtbl_empleados);
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 278, Short.MAX_VALUE))
+                    .addComponent(jScrollPane5))
+                .addContainerGap())
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jTabbedPane1.addTab("Consulta Empleados", jPanel3);
+
+        jPanel4.setBackground(java.awt.SystemColor.activeCaption);
+
+        jPanel13.setBackground(java.awt.SystemColor.activeCaption);
+
+        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel9.setText("BUSQUEDA:");
+
+        txt_sueldo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        txt_sueldo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_sueldoKeyTyped(evt);
+            }
+        });
+
+        jcbx_sueldo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jcbx_sueldo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Rut Empleado", "Nombre Completo", "Mes Empleados", "Año Empleados" }));
+
+        javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
+        jPanel13.setLayout(jPanel13Layout);
+        jPanel13Layout.setHorizontalGroup(
+            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel13Layout.createSequentialGroup()
+                .addGap(60, 60, 60)
+                .addComponent(jLabel9)
+                .addGap(18, 18, 18)
+                .addComponent(jcbx_sueldo, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(txt_sueldo, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(143, Short.MAX_VALUE))
+        );
+        jPanel13Layout.setVerticalGroup(
+            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel13Layout.createSequentialGroup()
+                .addGap(44, 44, 44)
+                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(txt_sueldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jcbx_sueldo, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(44, Short.MAX_VALUE))
+        );
+
+        jtbl_sueldo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jtbl_sueldo.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane6.setViewportView(jtbl_sueldo);
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 278, Short.MAX_VALUE))
+                    .addComponent(jScrollPane6))
+                .addContainerGap())
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jTabbedPane1.addTab("Consulta Sueldos", jPanel4);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jTabbedPane1))
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTabbedPane1)
+                .addContainerGap())
+        );
+
+        getContentPane().add(jPanel1, "card2");
+
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void txt_empleadosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_empleadosKeyTyped
+        // TODO add your handling code here:
+        txt_empleados.addKeyListener(new KeyAdapter() {
+            public void keyReleased(final KeyEvent e) {
+                String cadena = (txt_empleados.getText());
+                txt_empleados.setText(cadena);
+                repaint();
+                filtro_emple();
+            }
+        });
+        trsFiltro = new TableRowSorter(jtbl_empleados.getModel());
+        jtbl_empleados.setRowSorter(trsFiltro);
+    }//GEN-LAST:event_txt_empleadosKeyTyped
+
+    private void txt_sueldoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_sueldoKeyTyped
+        // TODO add your handling code here:
+        txt_sueldo.addKeyListener(new KeyAdapter() {
+            public void keyReleased(final KeyEvent e) {
+                String cadena = (txt_sueldo.getText());
+                txt_sueldo.setText(cadena);
+                repaint();
+                filtro_sueldo();
+            }
+        });
+        trsFiltro = new TableRowSorter(jtbl_sueldo.getModel());
+        jtbl_sueldo.setRowSorter(trsFiltro);
+    }//GEN-LAST:event_txt_sueldoKeyTyped
+
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel12;
+    private javax.swing.JPanel jPanel13;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JComboBox<String> jcbx_empleados;
+    private javax.swing.JComboBox<String> jcbx_sueldo;
+    private javax.swing.JTable jtbl_empleados;
+    private javax.swing.JTable jtbl_sueldo;
+    private javax.swing.JTextField txt_empleados;
+    private javax.swing.JTextField txt_sueldo;
+    // End of variables declaration//GEN-END:variables
+}
